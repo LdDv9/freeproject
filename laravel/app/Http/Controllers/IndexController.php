@@ -26,8 +26,8 @@ class IndexController extends Controller
     }
     public function index() {
         echo 'abc';
-//        $user   = new User();
-//        dd($user->getUsers());
+        $user   = new User();
+        dd($user->getUsers());
         return view('welcome');
     }
 }
