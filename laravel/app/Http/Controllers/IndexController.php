@@ -21,12 +21,16 @@ class IndexController extends Controller
         
     }
     public function __construct() {
-        add_action('wp_ajax_index_ajax',['App\Http\Controllers\PageController','ajaxTest']);
-        add_action('wp_ajax_nopriv_index_ajax',['App\Http\Controllers\PageController','ajaxTest']);
+        add_action('wp_ajax_get_user',['App\Http\Controllers\IndexController','ajaxGetUser']);
+        add_action('wp_ajax_nopriv_get_user',['App\Http\Controllers\IndexController','ajaxGetUser']);
     }
     public function index() {
         $user   = new User();
-        var_dump($user->getUsers());
         return view('welcome');
     }
+    public function ajaxGetUser(){
+        $input = request()->all();
+        dd($input);
+    }
+
 }

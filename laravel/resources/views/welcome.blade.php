@@ -9,7 +9,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="{{asset('asset/bootstrap/css/bootstrap.min.css')}}">
+        <script src="{{asset('asset/jq/jquery-3.3.1.min.js')}}"></script>
         <!-- Styles -->
         <style>
             html, body {
@@ -81,7 +82,7 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
-
+                <button id="testAjax" class="btn btn-primary">Click</button>
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>
@@ -92,4 +93,20 @@
             </div>
         </div>
     </body>
+    <script >
+        $('#testAjax').click(function () {
+            $.ajax({
+                url:"<?php echo admin_url('admin-ajax.php')?>",
+                dataType : 'json',
+                method: 'POST',
+                data:{
+                    action : "get_user",
+                    name : "test"
+                },
+                success : function (data) {
+                    console.log(data);
+                }
+            });
+        });
+    </script>
 </html>

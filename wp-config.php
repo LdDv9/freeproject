@@ -38,6 +38,8 @@ define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
 
 define( 'WP_ALLOW_REPAIR', true );
+
+
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -78,11 +80,7 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
-define( 'WP_DEBUG_LOG', true );
-define( 'WP_DEBUG_DISPLAY', true );
-define( 'SAVEQUERIES', true );
-define( 'SCRIPT_DEBUG', true );
+
 /* That's all, stop editing! Happy blogging. */
 
 /** Absolute path to the WordPress directory. */
