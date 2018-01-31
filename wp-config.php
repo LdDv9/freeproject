@@ -82,7 +82,8 @@ $table_prefix  = 'wp_';
  */
 
 /* That's all, stop editing! Happy blogging. */
-
+define('WP_DEBUG', true);
+define( 'WP_DEBUG_LOG', true );
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');

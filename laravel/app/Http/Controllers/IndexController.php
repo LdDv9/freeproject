@@ -1,9 +1,11 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
-use App\Base;
+
 use App\User;
+use Illuminate\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,16 +23,18 @@ class IndexController extends Controller
         
     }
     public function __construct() {
-        add_action('wp_ajax_get_user',['App\Http\Controllers\IndexController','ajaxGetUser']);
-        add_action('wp_ajax_nopriv_get_user',['App\Http\Controllers\IndexController','ajaxGetUser']);
+       parent::__construct();
+        add_action('wp_ajax_get_user',[$this,$this->ajaxHandler()]);
+        add_action('wp_ajax_nopriv_get_user',[$this,$this->ajaxHandler()]);
     }
     public function index() {
         $user   = new User();
         return view('welcome');
     }
-    public function ajaxGetUser(){
-        $input = request()->all();
-        dd($input);
+    static function ajaxGetUser($data){
+        header('Content-Type: application/json');
+    
+        echo json_encode($data);
     }
 
 }

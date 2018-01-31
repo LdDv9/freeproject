@@ -98,10 +98,12 @@
             $.ajax({
                 url:"<?php echo admin_url('admin-ajax.php')?>",
                 dataType : 'json',
+                defaultHeaders: { 'Content-Type': 'application/json' },
                 method: 'POST',
                 data:{
                     action : "get_user",
-                    name : "test"
+                    name : "test",
+                    method :'ajaxGetUser',
                 },
                 success : function (data) {
                     console.log(data);
