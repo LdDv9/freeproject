@@ -25,9 +25,8 @@ class IndexController extends Controller
         add_action('wp_ajax_nopriv_index_ajax',['App\Http\Controllers\PageController','ajaxTest']);
     }
     public function index() {
-        echo 'abc';
         $user   = new User();
-        dd($user->getUsers());
+        var_dump($user->getUsers());
         return view('welcome');
     }
 }

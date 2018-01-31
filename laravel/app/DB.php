@@ -9,10 +9,10 @@ $capsule = new Capsule;
 
 $capsule->addConnection([
 'driver'    => 'mysql',
-'host'      => 'localhost',
-'database'  => 'k5525viet_db',
-'username'  => 'k5525viet',
-'password'  => '5(xUN5h^0(.K',
+'host'      => 'db4free.net:3307',
+'database'  => 'db_free',
+'username'  => 'ld_cao',
+'password'  => '123456',
 'charset'   => 'utf8',
 'collation' => 'utf8_unicode_ci',
 'prefix'    => '',

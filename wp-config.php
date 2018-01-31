@@ -23,13 +23,13 @@
 define('DB_NAME', 'db_free');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'ld_cao');
 
 /** MySQL database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', '123456');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'db4free.net:3307');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -37,6 +37,7 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
+define( 'WP_ALLOW_REPAIR', true );
 /**#@+
  * Authentication Unique Keys and Salts.
  *

@@ -43,8 +43,12 @@ class LaravelBootstrap extends WPplugin
         $this->setMainFeature(FLaravelBootstrap::getInstance());
         parent::init();
         $loadLaravel = new LoadLaravel();
-        require_once $loadLaravel->laravel_exists();
-        require_once 'CallAjax.php';
+        if (!empty($loadLaravel->laravel_exists())) {
+            require_once $loadLaravel->laravel_exists();
+            require_once 'CallAjax.php';
+        }
+
+
     }
 }
 $LaravelBootstrap = LaravelBootstrap::getInstance();
