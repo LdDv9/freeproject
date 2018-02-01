@@ -28,13 +28,13 @@ class IndexController extends Controller
         add_action('wp_ajax_nopriv_get_user',[$this,$this->ajaxHandler()]);
     }
     public function index() {
-        $user   = new User();
+
         return view('welcome');
     }
     static function ajaxGetUser($data){
-        header('Content-Type: application/json');
-    
-        echo json_encode($data);
+        $user   = new User();
+        $dataUser = $user->getUsers();
+        return $dataUser;
+//        print_r(json_encode($user->getUsers()));
     }
-
 }

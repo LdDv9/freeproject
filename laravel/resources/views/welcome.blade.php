@@ -97,16 +97,18 @@
         $('#testAjax').click(function () {
             $.ajax({
                 url:"<?php echo admin_url('admin-ajax.php')?>",
-                dataType : 'json',
-                defaultHeaders: { 'Content-Type': 'application/json' },
                 method: 'POST',
                 data:{
                     action : "get_user",
                     name : "test",
                     method :'ajaxGetUser',
                 },
+                dataType : 'json',
                 success : function (data) {
                     console.log(data);
+                    $.each(data, function(i, item) {
+                        console.log(item);
+                    });
                 }
             });
         });

@@ -12,9 +12,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function __construct()
     {
-        $this->ajaxHandler();
     }
-    
     public function isAjax()
     {
         if ( ! defined('DOING_AJAX') || ! DOING_AJAX) {
@@ -25,7 +23,7 @@ class Controller extends BaseController
     }
     public function ajaxHandler()
     {
-        // view docs http://labs.omniti.com/labs/jsend
+               // view docs http://labs.omniti.com/labs/jsend
         if ($this->isAjax()) {
            
             $result = [
@@ -36,14 +34,14 @@ class Controller extends BaseController
             if (!empty($_REQUEST["method"])) {
                 $method = $_REQUEST["method"];
                 if (method_exists($this,  $method)) {
-                    call_user_func([$this, $method], $_POST);
                     if (!empty(method_exists($this,  $method))) {
-                        $result = $method;
+                        $result = call_user_func([$this, $method], $_POST);
                     }
                 }
             }
             echo json_encode($result);
             exit;
+
         }
     }
 }

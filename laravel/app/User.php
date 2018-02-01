@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
      public function getUsers() {
          $DB = require 'DB.php';
-         $data = $DB->table('wp_users')->get();
+         $data = $DB->table('wp_users')->where('ID',1)->first();
          return $data;
      }
 }
