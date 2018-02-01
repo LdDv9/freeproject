@@ -67,15 +67,13 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+            @if (is_user_logged_in())
                 <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
+                   <p>Logged</p>
                 </div>
+            @else
+                <div class="top-right links">
+                    <p>not logged in</div>
             @endif
 
             <div class="content">
@@ -99,14 +97,14 @@
                 url:"<?php echo admin_url('admin-ajax.php')?>",
                 method: 'POST',
                 data:{
-                    action : "get_user",
+                    action : "handler_laravel",
                     name : "test",
-                    method :'ajaxGetUser',
+                    method :'GetUser',
                 },
                 dataType : 'json',
                 success : function (data) {
                     console.log(data);
-                    $.each(data, function(i, item) {
+                    $.each(data, function(i,item) {
                         console.log(item);
                     });
                 }

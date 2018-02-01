@@ -23,22 +23,25 @@ class Controller extends BaseController
     }
     public function ajaxHandler()
     {
-               // view docs http://labs.omniti.com/labs/jsend
         if ($this->isAjax()) {
-           
-            $result = [
+
+            $result = array(
                 'status'  => 'error',
                 'message' => 'Đã xảy ra lỗi, vui lòng thử lại'
-            ];
-            
-            if (!empty($_REQUEST["method"])) {
-                $method = $_REQUEST["method"];
-                if (method_exists($this,  $method)) {
-                    if (!empty(method_exists($this,  $method))) {
-                        $result = call_user_func([$this, $method], $_POST);
-                    }
+            );
+
+            if ( ! empty( $_POST["method"] )) {
+                $method = sanitize_text_field($_POST["method"]);
+                if (method_exists($this, "ajax" . $method)) {
+                    $result = call_user_func([$this, "ajax" . $method], $_POST);
+                }
+            } else  if ( ! empty( $_GET["method"] )) {
+                $method = sanitize_text_field($_GET["method"]);
+                if (method_exists($this, "ajax" . $method)) {
+                    $result = call_user_func([$this, "ajax" . $method], $_GET);
                 }
             }
+
             echo json_encode($result);
             exit;
 

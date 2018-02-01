@@ -20,12 +20,11 @@ class IndexController extends Controller
             self::$instance = new self();
         }
         return self::$instance;
-        
     }
     public function __construct() {
        parent::__construct();
-        add_action('wp_ajax_get_user',[$this,$this->ajaxHandler()]);
-        add_action('wp_ajax_nopriv_get_user',[$this,$this->ajaxHandler()]);
+        add_action('wp_ajax_handler_laravel',[$this,"ajaxHandler"]);
+        add_action('wp_ajax_nopriv_handler_laravel',[$this,"ajaxHandler"]);
     }
     public function index() {
 
