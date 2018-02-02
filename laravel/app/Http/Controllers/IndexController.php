@@ -2,10 +2,9 @@
 
 
 namespace App\Http\Controllers;
-
-
+use Valitron\Validator;
+use Illuminate\Validation\Factory;
 use App\User;
-use Illuminate\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -30,10 +29,32 @@ class IndexController extends Controller
 
         return view('welcome');
     }
-    static function ajaxGetUser($data){
+    public function ajaxGetUser($data){
         $user   = new User();
         $dataUser = $user->getUsers();
         return $dataUser;
-//        print_r(json_encode($user->getUsers()));
+    }
+    public function ajaxGetPost($data){
+        $user   = new User();
+        $dataPost = $user->getPost();
+        return $dataPost;
+    }
+    public function ajaxSignIn($data){
+        $validate = new  Validator($data, array(), 'vi');
+        $validate->rule('required','user_login');
+        $validate->validate();
+        echo '<pre>';
+        print_r($validate);
+        echo '</pre>';
+        exit();
+
+
+        echo '<pre>';
+        print_r($validate);
+        echo '</pre>';
+        exit();
+        $user = new User();
+        $signIn = $user->signIn();
+        return $signIn;
     }
 }
