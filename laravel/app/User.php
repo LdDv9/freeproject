@@ -36,7 +36,7 @@ class User extends Authenticatable
          $data = $DB->table('wp_posts')->where('post_status','publish')->get();
          return $data;
      }
-    public function signIn(){
+    public function signIn($data){
          $result = [];
         $arrSignIn = [
             'user_login' => 'ld_cao',

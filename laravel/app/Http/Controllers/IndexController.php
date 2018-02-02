@@ -40,21 +40,20 @@ class IndexController extends Controller
         return $dataPost;
     }
     public function ajaxSignIn($data){
-        $validate = new  Validator($data, array(), 'vi');
-        $validate->rule('required','user_login');
-        $validate->validate();
-        echo '<pre>';
-        print_r($validate);
-        echo '</pre>';
-        exit();
-
-
-        echo '<pre>';
-        print_r($validate);
-        echo '</pre>';
-        exit();
+        $result = [];
         $user = new User();
-        $signIn = $user->signIn();
-        return $signIn;
+        $validate = new  Validator($data, array(), 'en');
+        $validate->rule('required',['user_login','user_password']);
+        $validate->rule('email',['user_login']);
+        if ($validate->validate()) {
+            $signIn = $user->signIn($data);
+        } else {
+            $result['errors'] = 1;
+            foreach ($validate->errors() as $listError) {
+                $result['mess'] = $listError[0];
+                break;
+            }
+        }
+        return $result;
     }
 }

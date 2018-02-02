@@ -181,11 +181,13 @@
                         success : function (data) {
                             if (data.errors) {
                                 swal({
+                                    title : 'Error',
                                     type:'warning',
                                     html : data.mess
                                 });
                             } else{
                                 swal({
+                                    title : 'Success',
                                     type:'success',
                                     html : data.mess
                                 }).then( function () {
