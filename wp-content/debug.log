@@ -122,3 +122,48 @@ Stack trace:
 #1 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Container\Container.php(631): Illuminate\Container\Container->build('Illuminate\\Cont...')
 #2 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Container\Container.php(586): Illuminate\Container\Container->resolve('Illuminate\\Cont...', Array)
 #3 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Foundation\helpers.php(110): Illuminate\Container\Container->make('Illuminate\\Cont...', in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Container\Container.php on line 918
+[02-Feb-2018 13:18:13 UTC] PHP Fatal error:  Uncaught Error: Class 'App\Http\Controllers\IndexController' not found in D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-content\themes\corporatebits\template\index.php:6
+Stack trace:
+#0 D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-includes\template-loader.php(74): include()
+#1 D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-blog-header.php(19): require_once('D:\\Work\\Web\\XAM...')
+#2 D:\Work\Web\XAMPP\htdocs\web\freeproject\index.php(17): require('D:\\Work\\Web\\XAM...')
+#3 {main}
+  thrown in D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-content\themes\corporatebits\template\index.php on line 6
+[02-Feb-2018 13:40:43 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Http\Controllers\Controller::validate() must be an instance of Illuminate\Http\Request, array given, called in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\IndexController.php on line 44 and defined in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Validation\ValidatesRequests.php:41
+Stack trace:
+#0 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\IndexController.php(44): App\Http\Controllers\Controller->validate(Array, Array)
+#1 [internal function]: App\Http\Controllers\IndexController->ajaxSignIn(Array)
+#2 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\Controller.php(36): call_user_func(Array, Array)
+#3 D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-includes\class-wp-hook.php(286): App\Http\Controllers\Controller->ajaxHandler('')
+#4 D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#5 D in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Validation\ValidatesRequests.php on line 41
+[02-Feb-2018 13:56:34 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Http\Controllers\Controller::validate() must be an instance of Illuminate\Http\Request, array given, called in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\IndexController.php on line 45 and defined in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Validation\ValidatesRequests.php:41
+Stack trace:
+#0 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\IndexController.php(45): App\Http\Controllers\Controller->validate(Array, Array)
+#1 [internal function]: App\Http\Controllers\IndexController->ajaxSignIn(Array)
+#2 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\Controller.php(36): call_user_func(Array, Array)
+#3 D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-includes\class-wp-hook.php(286): App\Http\Controllers\Controller->ajaxHandler('')
+#4 D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#5 D in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Validation\ValidatesRequests.php on line 41
+[02-Feb-2018 13:56:44 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Http\Controllers\Controller::validate() must be an instance of Illuminate\Http\Request, array given, called in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\IndexController.php on line 45 and defined in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Validation\ValidatesRequests.php:41
+Stack trace:
+#0 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\IndexController.php(45): App\Http\Controllers\Controller->validate(Array, Array)
+#1 [internal function]: App\Http\Controllers\IndexController->ajaxSignIn(Array)
+#2 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\Controller.php(36): call_user_func(Array, Array)
+#3 D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-includes\class-wp-hook.php(286): App\Http\Controllers\Controller->ajaxHandler('')
+#4 D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#5 D in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Validation\ValidatesRequests.php on line 41
+[02-Feb-2018 14:04:39 UTC] PHP Fatal error:  Uncaught Illuminate\Contracts\Container\BindingResolutionException: Target [Illuminate\Contracts\Validation\Factory] is not instantiable. in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Container\Container.php:918
+Stack trace:
+#0 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Container\Container.php(758): Illuminate\Container\Container->notInstantiable('Illuminate\\Cont...')
+#1 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Container\Container.php(631): Illuminate\Container\Container->build('Illuminate\\Cont...')
+#2 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Container\Container.php(586): Illuminate\Container\Container->resolve('Illuminate\\Cont...', Array)
+#3 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Foundation\helpers.php(110): Illuminate\Container\Container->make('Illuminate\\Cont...', Arra in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Container\Container.php on line 918
+[02-Feb-2018 14:11:06 UTC] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Http\Controllers\Controller::validate() must be an instance of Illuminate\Http\Request, array given, called in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\IndexController.php on line 45 and defined in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Validation\ValidatesRequests.php:41
+Stack trace:
+#0 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\IndexController.php(45): App\Http\Controllers\Controller->validate(Array, Array)
+#1 [internal function]: App\Http\Controllers\IndexController->ajaxSignIn(Array)
+#2 D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\app\Http\Controllers\Controller.php(36): call_user_func(Array, Array)
+#3 D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-includes\class-wp-hook.php(286): App\Http\Controllers\Controller->ajaxHandler('')
+#4 D:\Work\Web\XAMPP\htdocs\web\freeproject\wp-includes\class-wp-hook.php(310): WP_Hook->apply_filters('', Array)
+#5 D in D:\Work\Web\XAMPP\htdocs\web\freeproject\laravel\vendor\laravel\framework\src\Illuminate\Foundation\Validation\ValidatesRequests.php on line 41
