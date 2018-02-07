@@ -47,12 +47,29 @@ class IndexController extends Controller
         $validate->rule('email',['user_login']);
         if ($validate->validate()) {
             $signIn = $user->signIn($data);
+           if ($signIn['errors']) {
+               $result['errors'] = $signIn['errors'];
+           } else {
+               $result['success'] = $signIn['errors'];
+           }
+            $result['mess']   = $signIn['mess'];
         } else {
             $result['errors'] = 1;
             foreach ($validate->errors() as $listError) {
                 $result['mess'] = $listError[0];
                 break;
             }
+        }
+        return $result;
+    }
+    public function ajaxLogOut($data){
+        $result =[];
+        if (is_user_logged_in()) {
+            wp_logout();
+            $result['success'] = 1;
+        } else {
+            $result['errors'] = 1;
+            $result['mess'] = 'Not logged in';
         }
         return $result;
     }

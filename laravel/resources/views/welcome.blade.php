@@ -92,7 +92,8 @@
 
                 <h2>Modal Example</h2>
                 <!-- Trigger the modal with a button -->
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Signin</button>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Login</button>
+                <button type="button" class="btn btn-lg btn-danger" onclick="logOut()">Logout</button>
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
@@ -124,6 +125,39 @@
         </div>
     </body>
     <script >
+        function logOut() {
+            $.ajax({
+                url:"<?php echo admin_url('admin-ajax.php')?>",
+                method: 'POST',
+                data: {
+                    action : 'handler_laravel',
+                    method :'LogOut'
+                },
+                dataType : 'json',
+                beforeSend : function () {
+                    swal({
+                        title :  'LogOut'
+                    });
+                    swal.showLoading();
+                },
+                success : function (data) {
+                    if (data.success) {
+                        swal({
+                            title :  'success',
+                            type:'success'
+                        }).then(function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        swal({
+                            title :  'error',
+                            type:'warning',
+                            html: data.mess,
+                        });
+                    }
+                }
+            });
+        }
         $('#testAjax').click(function () {
             $.ajax({
                 url:"<?php echo admin_url('admin-ajax.php')?>",
@@ -174,7 +208,7 @@
                         dataType : 'json',
                         beforeSend : function () {
                             swal({
-                                title :  'singing'
+                                title :  'Login'
                             });
                             swal.showLoading();
                         },

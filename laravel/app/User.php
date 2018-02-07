@@ -38,10 +38,7 @@ class User extends Authenticatable
      }
     public function signIn($data){
          $result = [];
-        $arrSignIn = [
-            'user_login' => 'ld_cao',
-            'user_password' => '01664153347'
-        ];
+        $arrSignIn = $data;
         $resultSignIn = wp_signon($arrSignIn);
         if (!empty($resultSignIn->errors)) {
             $result['errors'] = 1;
