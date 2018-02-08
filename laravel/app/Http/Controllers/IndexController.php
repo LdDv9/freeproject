@@ -62,7 +62,7 @@ class IndexController extends Controller
         }
         return $result;
     }
-    public function ajaxLogOut($data){
+    public function ajaxLogOut($data) {
         $result =[];
         if (is_user_logged_in()) {
             wp_logout();
@@ -70,6 +70,29 @@ class IndexController extends Controller
         } else {
             $result['errors'] = 1;
             $result['mess'] = 'Not logged in';
+        }
+        return $result;
+    }
+    public function ajaxRegisterUser($data) {
+        $validate = new Validator($data,array(),'en');
+        $validate->rule('required',['user_login','user_password','user_email']);
+        $validate->rule('email',['user_email']);
+        if (is_user_logged_in()) {
+            $result = [
+              'errors' => 'logged',
+              'mess'   => 'You must be logout to register'
+            ];
+            return $result;
+        }
+        if ($validate->validate()) {
+            $user = new User();
+            $result = $user->registerUser($data);
+        } else {
+            $result['errors'] = 1;
+            foreach ($validate->errors() as $listError) {
+                $result['mess'] = $listError[0];
+                break;
+            }
         }
         return $result;
     }

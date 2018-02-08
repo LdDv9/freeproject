@@ -11,7 +11,9 @@ require_once( dirname( __FILE__ ) . '/admin.php' );
 
 /** Load WordPress dashboard API */
 require_once(ABSPATH . 'wp-admin/includes/dashboard.php');
-
+if (!current_user_can('administrator') && !current_user_can('editor')) {
+    wp_redirect(home_url());
+}
 wp_dashboard_setup();
 
 wp_enqueue_script( 'dashboard' );

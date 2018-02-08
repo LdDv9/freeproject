@@ -17,7 +17,7 @@
             html, body {
                 background-color: #fff;
                 color: #636b6f;
-                font-family: 'Raleway', sans-serif;
+                /*font-family: 'Raleway', sans-serif;*/
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
@@ -49,6 +49,7 @@
 
             .title {
                 font-size: 84px;
+                font-weight: lighter;
             }
 
             .links > a {
@@ -67,18 +68,28 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+    <div class="flex-center position-ref full-height">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <a class="navbar-brand" href="{{site_url()}}">Home Fox</a>
             @if (is_user_logged_in())
                 <div class="top-right links">
-                   <p>Logged</p>
+                    <p class="links">Hello : {{wp_get_current_user()->data->display_name}} |
+                        @if(in_array('administrator',wp_get_current_user()->roles))
+                            <a href="{{admin_url()}}">Admin board</a>
+                        @endif
+                    </p>
+
                 </div>
             @else
                 <div class="top-right links">
-                    <p>not logged in</div>
+                    <p>Not logged in</p>
+                </div>
             @endif
+        </nav>
+
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <p>Laravel</p>
                 </div>
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
@@ -94,7 +105,8 @@
                 <!-- Trigger the modal with a button -->
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Login</button>
                 <button type="button" class="btn btn-lg btn-danger" onclick="logOut()">Logout</button>
-                <!-- Modal -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#register">Register</button>
+                <!-- Modal login-->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog">
                         <!-- Modal content-->
@@ -121,8 +133,40 @@
 
                     </div>
                 </div>
+                <!--Modal register -->
+                <div class="modal fade" id="register" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content col-md-12" >
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Please type your info to register</h4>
+                            </div>
+                            <form action="" id="formRegister">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="user_login" placeholder="Your name account">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="password" name="user_password" placeholder="Your Password">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="text" name="user_email" placeholder="Your Email address">
+                                </div>
+                                <div>
+                                    <input type="hidden" name="action" value="handler_laravel">
+                                    <input type="hidden" name="method" value="RegisterUser">
+                                    <input class="btn btn-info" type="submit" name="register" id="submitRegisterUser" value="Register">
+                                </div>
+                            </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
-        </div>
+    </div>
     </body>
     <script >
         function logOut() {
@@ -231,6 +275,40 @@
                             }
                         }
                     });
+        });
+        $('#submitRegisterUser').click(function () {
+            $.ajax({
+                url:"<?php echo admin_url('admin-ajax.php')?>",
+                method: 'POST',
+                data: $('#formRegister').serialize(),
+                dataType : "json",
+                beforeSend: function () {
+                    swal({
+                        title :  'Register'
+                    });
+                    swal.showLoading();
+                },
+                success : function (data) {
+                    if (data.errors) {
+                        swal({
+                            title:"Warning",
+                            html : data.mess,
+                            type:"warning"
+                        });
+                    } else {
+                        swal({
+                            title:"Success",
+                            html : 'Register success',
+                            type:"success"
+                        }).then(function () {
+                            window.location.reload();
+                        });
+
+                    }
+                }
+
+            });
+            return false;
         });
     </script>
 </html>

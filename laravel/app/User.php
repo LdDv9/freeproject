@@ -33,7 +33,7 @@ class User extends Authenticatable
      }
      public function getPost(){
          $DB = require 'DB.php';
-         $data = $DB->table('wp_posts')->where('post_status','publish')->get();
+         $data = $DB->table('wp_posts')->where('post_status','publish')->where('post_type','post')->get();
          return $data;
      }
     public function signIn($data){
@@ -50,6 +50,28 @@ class User extends Authenticatable
                 'success' => 1,
                 'mess'    => 'Sign in success'
             ];
+        }
+        return $result;
+    }
+    public function registerUser($data) {
+         $userAccount   = $data['user_login'];
+         $userPassword = $data['user_password'];
+         $userEmail    = $data['user_email'];
+         $result = wp_create_user($userAccount,$userPassword,$userEmail);
+        if (!empty($result->errors)) {
+            foreach ((array)$result->errors as $error => $listError) {
+                $result->errors = $error;
+                $result->mess   = $listError[0];
+                break;
+            }
+        } else {
+            $result->success = 1;
+            $result->mess    = 'Register success';
+            $arrarySignOn = [
+                'user_login' => $userEmail,
+                'user_password' => $userPassword
+            ];
+            wp_signon($arrarySignOn);
         }
         return $result;
     }
