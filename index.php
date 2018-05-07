@@ -1,4 +1,20 @@
 <?php
+require './predis/autoload.php';
+
+$predis = new Predis\Client([
+    "scheme"=>"tcp",
+    "host"=>"127.0.0.1",
+    "port"=>6379
+]);
+
+$predis->set('mess','hello wold');
+
+$value= $predis->get('mess');
+
+print ($value);
+
+echo !empty($predis->exists('mess')) ? 'yes' : 'nau';
+die();
 /**
  * Front to the WordPress application. This file doesn't do anything, but loads
  * wp-blog-header.php which does and tells WordPress to load the theme.
